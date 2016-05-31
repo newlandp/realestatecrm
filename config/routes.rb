@@ -1,18 +1,33 @@
 Rails.application.routes.draw do
   
-  
-  
+  devise_for :users, :controllers => { :registrations => "registrations", :sessions => "sessions" }
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'pages#bootstrap_elements'
+  root "pages#landing"
   
+  post "reset-contact/:user_id/:id" => "contacts#reset", as: "reset_last_contacted_date"
+  
+  get "all-templates" => "templates#all"
+  get "bootstrap-elements" => 'pages#bootstrap_elements'
   get "blank-page" => "pages#blank_page"
   get "forms" => "pages#forms"
   get "bootstrap-grid" => "pages#bootstrap_grid"
   get "index" => "pages#index"
   get "tables" => "pages#tables"
+  get "landing" => "pages#landing"
+  get "home" => "pages#profile"
+  get "charts" => "pages#charts"
+  
+  resources :users, only: [] do
+    resources :templates
+    resources :contacts do
+      collection { post :import }
+    end
+  end
+  
+  get '*path' => redirect('/')
     
 
   # Example of regular route:

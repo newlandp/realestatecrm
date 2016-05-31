@@ -1,4 +1,11 @@
 class PagesController < ApplicationController
+    
+    before_action :authenticate_user!, :except => [:landing]
+    
+    def profile
+        @user = current_user
+    end
+    
     def bootstrap_elements
     end
     
@@ -15,5 +22,12 @@ class PagesController < ApplicationController
     end
     
     def tables
+    end
+    
+    def landing
+        render :layout => "landing"
+    end
+    
+    def charts
     end
 end

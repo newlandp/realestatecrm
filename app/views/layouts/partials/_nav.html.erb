@@ -1,5 +1,6 @@
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
     <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="container-fluid">
     <div class="navbar-header">
         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
             <span class="sr-only">Toggle navigation</span>
@@ -7,18 +8,20 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="index.html">Real Estate CRM</a>
+        <a class="navbar-brand" href="<%= home_path %>">Real Estate CRM</a>
     </div>
     <!-- Top Menu Items -->
-    <ul class="nav navbar-right top-nav">
-        <li>
-            <a>Welcome suer!</a>
-        </li>
-        <li>
-            <a href="#"><i class="fa fa-user"></i> John Smith</a>
-        </li>
-    </ul>
+    <div class="navbar-form navbar-right">
+        <% unless user_signed_in? %>
+            <a class="btn btn-success" href="<%= new_user_session_path %>" role="button">Sign In</a>
+            <a class="btn btn-success" href="<%= new_user_registration_path %>" role="button">Sign Up</a>
+        <% else %>
+            <a class="btn btn-primary" href="<%= edit_user_registration_path %>" role="button">Edit Account</a>
+            <a class="btn btn-danger" href="<%= destroy_user_session_path %>" data-method="delete" role="button">Sign Out</a>
+        <% end %>
+    </div>
     <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
     <%= render partial: "layouts/partials/sidebar" %>
     <!-- /.navbar-collapse -->
+    </div>
 </nav>

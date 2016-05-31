@@ -1,18 +1,46 @@
 <div class="collapse navbar-collapse navbar-ex1-collapse">
     <ul class="nav navbar-nav side-nav">
-        <li>
+        <li class="<%= 'active' if controller?('pages') && action?('profile') %>">
+            <a href="<%= home_path %>"><i class="fa fa-fw fa-user"></i> Profile</a>
+        </li>
+        <li class="<%= 'active' if controller?('contacts') %>">
+            <a href="javascript:;" data-toggle="collapse" data-target="#contact"><i class="fa fa-fw fa-users"></i> Contacts <i class="fa fa-fw fa-caret-down"></i></a>
+            <ul id="contact" class="collapse">
+                <li class="<%= 'active' if controller?('contacts') && action?('index') %>">
+                    <a href="<%= user_contacts_path(current_user.id) %>"><i class="fa fa-fw fa-users"></i> All Contacts</a>
+                </li>
+                <li class="<%= 'active' if controller?('contacts') && action?('new') %>">
+                    <a href="<%= new_user_contact_path(current_user.id) %>"><i class="fa fa-fw fa-plus"></i> Add New Contact</a>
+                </li>
+            </ul>
+        </li>
+        <li class="<%= 'active' if controller?('templates') %>">
+            <a href="javascript:;" data-toggle="collapse" data-target="#template"><i class="fa fa-fw fa-file-text"></i> Templates <i class="fa fa-fw fa-caret-down"></i></a>
+            <ul id="template" class="collapse">
+                <li class="<%= 'active' if controller?('templates') && action?('all') %>">
+                    <a href="<%= all_templates_path %>"><i class="fa fa-fw fa-list"></i> All Templates</a>
+                </li>
+                <li class="<%= 'active' if controller?('templates') && action?('index') %>">
+                    <a href="<%= user_templates_path(current_user.id) %>"><i class="fa fa-fw fa-list-ul"></i> Your Templates</a>
+                </li>
+                <li class="<%= 'active' if controller?('templates') && action?('new') %>">
+                    <a href="<%= new_user_template_path(current_user.id) %>"><i class="fa fa-fw fa-plus"></i> Add New Template</a>
+                </li>
+            </ul>
+        </li>
+        <li class="<%= 'active' if controller?('pages') && action?('index') %>">
             <a href="<%= index_path %>"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
         </li>
-        <li>
+        <li class="<%= 'active' if controller?('pages') && action?('tables') %>">
             <a href="<%= tables_path %>"><i class="fa fa-fw fa-table"></i> Tables</a>
         </li>
-        <li>
+        <li class="<%= 'active' if controller?('pages') && action?('forms') %>">
             <a href="<%= forms_path %>"><i class="fa fa-fw fa-edit"></i> Forms</a>
         </li>
-        <li>
-            <a href="<%= root_path %>"><i class="fa fa-fw fa-desktop"></i> Bootstrap Elements</a>
+        <li class="<%= 'active' if controller?('pages') && action?('bootstrap_elements') %>">
+            <a href="<%= bootstrap_elements_path %>"><i class="fa fa-fw fa-desktop"></i> Bootstrap Elements</a>
         </li>
-        <li>
+        <li class="<%= 'active' if controller?('pages') && action?('bootstrap_grid') %>">
             <a href="<%= bootstrap_grid_path %>"><i class="fa fa-fw fa-wrench"></i> Bootstrap Grid</a>
         </li>
         <li>
@@ -26,7 +54,7 @@
                 </li>
             </ul>
         </li>
-        <li class="active">
+        <li class="<%= 'active' if controller?('pages') && action?('blank_page') %>">
             <a href="<%= blank_page_path %>"><i class="fa fa-fw fa-file"></i> Blank Page</a>
         </li>
     </ul>
