@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
+  xmlns:o="urn:schemas-microsoft-com:office:office"
+  xmlns:x="urn:schemas-microsoft-com:office:excel"
+  xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"
+  xmlns:html="http://www.w3.org/TR/REC-html40">
+  <Worksheet ss:Name="Sheet1">
+    <Table>
+      <Row>
+        <Cell><Data ss:Type="String">ID</Data></Cell>
+        <Cell><Data ss:Type="String">Name</Data></Cell>
+        <Cell><Data ss:Type="String">Email</Data></Cell>
+        <Cell><Data ss:Type="String">Phone Number</Data></Cell>
+        <Cell><Data ss:Type="String">Address</Data></Cell>
+        <Cell><Data ss:Type="String">Notes</Data></Cell>
+        <Cell><Data ss:Type="String">Interests</Data></Cell>
+        <Cell><Data ss:Type="String">How We Met</Data></Cell>
+        <Cell><Data ss:Type="String">Last Contacted</Data></Cell>
+        <Cell><Data ss:Type="String">Prior Relationship?</Data></Cell>
+        <Cell><Data ss:Type="String">On Hotlist?</Data></Cell>
+      </Row>
+    <% @contacts.each do |contact| %>
+      <Row>
+        <Cell><Data ss:Type="Number"><%= contact.id %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= contact.name %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= contact.email %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= contact.phone_number %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= contact.address %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= contact.notes %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= contact.interests %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= contact.how_we_met %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= contact.last_contacted %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= contact.prior_relationship %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= contact.hotlist %></Data></Cell>
+        
+      </Row>
+    <% end %>
+    </Table>
+  </Worksheet>
+</Workbook>

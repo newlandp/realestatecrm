@@ -1,0 +1,50 @@
+<%= form_for([@user, @contact]) do |f| %>
+   <%= render "errors" %>
+   <div class="form-group">
+      <%= f.label :name %>
+      <%= f.text_field :name, size: 40, autofocus: true, :class => "form-control" %>
+   </div>
+   <div class="form-group">
+      <%= f.label :email %>
+      <%= f.email_field :email, size: 40, :class => "form-control" %>
+   </div>
+   <div class="form-group">
+      <%= f.label "Phone Number (Enter Without Spaces or Dashes)" %>
+      <%= f.telephone_field :phone_number, size: 40, :class => "form-control" %>
+   </div>
+   <div class="form-group">
+      <%= f.label :address %>
+      <%= f.text_field :address, size: 40, :class => "form-control" %>
+   </div>
+   <div class="form-group">
+      <%= f.label :interests %>
+      <%= f.text_area :interests, :class => "form-control" %>
+   </div>
+   <div class="form-group">
+      <%= f.label "How did you meet this person?" %>
+      <%= f.text_area :how_we_met, :class => "form-control" %>
+   </div>
+   <div class="form-group">
+      <%= f.label "Notes (anything else you want to say about this person)" %>
+      <%= f.text_area :notes, :class => "form-control" %>
+   </div>
+   <% if @contact.new_record? %>
+      <div class="form-group">
+         <%= f.label "Have you personally known and/or communicated previously with this person for over a month?" %>
+         <%= f.check_box :prior_relationship, :class => "form-control" %>
+      </div>
+   <% end %>
+   <div class="form-group">
+      <%= f.label :days_between_contact %>
+      <%= f.number_field :days_between_contact, :class => "form-control" %>
+   </div>
+   <div class="form-group">
+      <%= f.label "Is this person a current priority and/or on a hotlist?" %>
+      <%= f.check_box :hotlist, :class => "form-control" %>
+   </div>
+   <% if @contact.new_record? %>
+     <p><%= f.submit "Create Contact", :type => "submit", :class => "btn btn-sm btn-default" %></p>
+   <% else %>
+     <p><%= f.submit "Update Contact", :type => "submit", :class => "btn btn-sm btn-default" %></p>
+   <% end %>
+<% end %>

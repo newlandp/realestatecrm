@@ -1,0 +1,86 @@
+<!-- Page Heading -->
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header">
+            <%= @contact.name %> <small>Contact</small>
+        </h1>
+    </div>
+</div>
+
+<div class="row">
+ <div class="col-lg-8 col-lg-offset-2">
+    <div class="panel panel-default">
+       <div class="panel-body">
+          <div class="text-center">
+             <h3 class="mt0"><%= @contact.name %></h3>
+             <p><%= @contact.email %></p>
+          </div>
+          
+          <% if @contact.status == "orange" %>
+              <div class="row">
+                  <div class="col-lg-8 col-lg-offset-2">
+                      <!-- START panel-->
+                      <div id="panelDemo10" class="panel panel-warning">
+                         <div class="panel-heading text-center">Task Due: Today</div>
+                         <div class="panel-body">
+                            <p>It is always good to have a plan when contacting people in your list. Here are <%= link_to "all the public templates in our database", all_templates_path %> that you have the option of using
+                            to help complete this task. You can also use <%= link_to "your own templates", user_templates_path(current_user.id) %>, or simply reach out to <%= @contact.name %> in your own way.</p>
+                         </div>
+                         <%= link_to 'I Have Completed This Task (Click To Confirm)', reset_last_contacted_date_path(@user.id, @contact.id), :method => :post, :class => 'media p mt0 list-group-item text-center text-muted' %>
+                      </div>
+                      <!-- END panel-->
+                  </div>
+              </div>
+          <% elsif @contact.status == "red" %>
+              <div class="row">
+                  <div class="col-lg-8 col-lg-offset-2">
+                      <!-- START panel-->
+                      <div id="panelDemo10" class="panel panel-danger">
+                         <div class="panel-heading text-center">Task Due: <%= pluralize(@contact.days_from_task_date, "Day") %> Past Due Date!</div>
+                         <div class="panel-body">
+                            <p>It is always good to have a plan when contacting people in your list. Here are <%= link_to "all the public templates in our database", all_templates_path %> that you have the option of using
+                            to help complete this task. You can also use <%= link_to "your own templates", user_templates_path(current_user.id) %>, or simply reach out to <%= @contact.name %> in your own way.</p>
+                         </div>
+                         <%= link_to 'I Have Completed This Task (Click To Confirm)', reset_last_contacted_date_path(@user.id, @contact.id), :method => :post, :class => 'media p mt0 list-group-item text-center text-muted' %>
+                      </div>
+                      <!-- END panel-->
+                  </div>
+              </div>
+          <% else %>
+              <div class="row">
+                  <div class="col-lg-8 col-lg-offset-2">
+                      <!-- START panel-->
+                      <div id="panelDemo10" class="panel panel-success">
+                         <div class="panel-heading text-center"><em class="icon-check"></em>            No Tasks Due! <%= pluralize((@contact.days_from_task_date * -1), "Day") %> Until Next Task</div>
+                      </div>
+                      <!-- END panel-->
+                  </div>
+              </div>
+          <% end %>
+          
+          <% unless @contact.notes == "" || @contact.notes == nil %>
+              <hr/>
+              <div class="text-center">
+                 <p><%= @contact.notes %></p>
+              </div>
+          <% end %>    
+          <hr/>
+          <ul class="list-unstyled ph-xl">
+             <% if @contact.last_contacted %> 
+                 <li>
+                    <em class="fa fa-calendar fa-fw mr-lg"></em>Last Contacted: <%= @contact.last_contacted.strftime("%B #{@contact.last_contacted.day.ordinalize}, %Y") %>
+                 </li>
+             <% end %>
+             <% unless @contact.address == "" || @contact.address == nil %>
+                 <li>
+                    <em class="fa fa-home fa-fw mr-lg"></em><%= @contact.address %></li>
+             <% end %>
+          </ul>
+          <a href="<%= edit_user_contact_path(@user.id, @contact.id) %>" class="media p mt0 list-group-item text-center text-muted">Edit Contact</a></br>
+          <%= link_to 'Delete Contact', user_contact_path(@user.id, @contact.id), :method => :delete,
+              data: { confirm: 'Are you sure you want to permanently delete this contact?' }, :type => "button",
+              :class => 'list-group-item text-center p btn-danger text-danger' %>
+       </div>
+    </div>
+ </div>
+</div>

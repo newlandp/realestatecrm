@@ -1,0 +1,31 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_id: 
+  name: MyString
+  email: MyString
+  phone_number: 1
+  address: MyString
+  days_between_contact: 1
+  last_contacted: 2016-05-27 18:49:39
+  beginning_days_between: 1
+  prior_relationship: false
+  interests: MyText
+  how_we_met: MyText
+  notes: MyText
+  hotlist: false
+
+two:
+  user_id: 
+  name: MyString
+  email: MyString
+  phone_number: 1
+  address: MyString
+  days_between_contact: 1
+  last_contacted: 2016-05-27 18:49:39
+  beginning_days_between: 1
+  prior_relationship: false
+  interests: MyText
+  how_we_met: MyText
+  notes: MyText
+  hotlist: false
