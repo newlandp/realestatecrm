@@ -11,22 +11,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160531205212) do
+ActiveRecord::Schema.define(version: 20160531205914) do
 
   create_table "contacts", force: :cascade do |t|
     t.integer  "user_id"
-    t.string   "name",                              default: ""
-    t.string   "email",                             default: ""
-    t.integer  "phone_number",           limit: 16
-    t.string   "address",                           default: ""
-    t.integer  "days_between_contact",              default: 50
+    t.string   "name",                             default: ""
+    t.string   "email",                            default: ""
+    t.integer  "phone_number",           limit: 8
+    t.string   "address",                          default: ""
+    t.integer  "days_between_contact",             default: 50
     t.datetime "last_contacted"
     t.integer  "beginning_days_between"
-    t.boolean  "prior_relationship",                default: false
-    t.text     "interests",                         default: ""
-    t.text     "how_we_met",                        default: ""
-    t.text     "notes",                             default: ""
-    t.boolean  "hotlist",                           default: false
+    t.boolean  "prior_relationship",               default: false
+    t.text     "interests",                        default: ""
+    t.text     "how_we_met",                       default: ""
+    t.text     "notes",                            default: ""
+    t.boolean  "hotlist",                          default: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
