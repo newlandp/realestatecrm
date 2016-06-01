@@ -33,9 +33,7 @@ class User < ActiveRecord::Base
       
     end
     
-    todays_contacts = self.late_contacts + todays_contacts
-    
-    todays_contacts = todays_contacts.sort { |a, b| b.days_since <=> a.days_since }
+    todays_contacts = self.late_contacts.sort { |a, b| b.days_since <=> a.days_since } + todays_contacts.sort { |a, b| b.days_since <=> a.days_since }
     
     if self.max_contacts_per_day
       todays_contacts[0..(self.max_contacts_per_day - 1)]
