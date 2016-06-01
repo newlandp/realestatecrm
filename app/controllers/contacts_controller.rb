@@ -56,7 +56,7 @@ class ContactsController < ApplicationController
         beginning_days_update(@contact)
         
         if @contact.save
-            redirect_to user_path(@user.id), notice: "Task successfully completed!"
+            redirect_to home_path, notice: "Task successfully completed!"
         else
             render :show, alert: "Oops, something went wrong!"
         end

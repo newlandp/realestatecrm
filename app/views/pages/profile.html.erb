@@ -40,8 +40,12 @@
                         <i class="fa fa-tasks fa-5x"></i>
                     </div>
                     <div class="col-xs-9 text-right">
-                        <div class="huge">12</div>
-                        <div>Tasks Due (pluralize)</div>
+                        <div class="huge"><%= @user.number_of_tasks_remaining %></div>
+                        <% if @user.number_of_tasks_completed == 0 %>
+                            <div><%= "Task".pluralize(@user.number_of_tasks_remaining) %> Due Today</div>
+                        <% else %>
+                            <div><%= "Task".pluralize(@user.number_of_tasks_remaining) %> Still Remining</div>
+                        <% end %>
                     </div>
                 </div>
             </div>
@@ -97,14 +101,21 @@
 <div class="row">
      <div class="col-lg-4 col-lg-offset-1">
         <div class="panel panel-default">
-           <% unless @user.contacts_for_today.empty? %>
+           <% unless @user.user_tasks_array.empty? %>
               <div class="panel-heading">Tasks Stuff</div>
               <div class="list-group">
-                 <% @user.contacts_for_today.each do |contact| %>
-                    <a href="<%= user_contact_path(@user.id, contact.id) %>" class="list-group-item">
-                       <em class="pull-right fa fa-square-o fa-lg fa-fw text-muted mt"></em>
-                       <h4 class="list-group-item-heading">Contact <%= contact.name %></h4>
-                    </a>
+                 <% @user.user_tasks_array.each do |contact| %>
+                     <% unless contact.status == "green" %>
+                        <a href="<%= user_contact_path(@user.id, contact.id) %>" class="list-group-item list-group-item-warning">
+                           <em class="pull-right fa fa-square-o fa-lg fa-fw text-muted mt"></em>
+                           <h4 class="list-group-item-heading">Contact <%= contact.name %></h4>
+                        </a>
+                     <% else %>
+                         <a href="<%= user_contact_path(@user.id, contact.id) %>" class="list-group-item list-group-item-success">
+                           <em class="pull-right fa fa-check-square-o fa-lg fa-fw text-muted mt"></em>
+                           <h4 class="list-group-item-heading">Contact <%= contact.name %></h4>
+                        </a>
+                     <% end %>
                  <% end %>
               </div>
            <% else %>
@@ -120,7 +131,6 @@
                  <em class="icon-plus text-muted"></em>
               </a><a href="<%= user_contacts_path(@user.id) %>">Contacts</a></div>
            <div class="list-group">
-              
               <% contacts_by_days_since_task_date_with_limit(@user).each do |contact| %>
                  <a href="<%= user_contact_path(@user.id, contact.id) %>" class="media p mt0 list-group-item">
                     <span class="pull-right">
@@ -164,14 +174,22 @@
 </div>
 
 <div class="row">
-    <div class="col-sm-4">
+     <div class="col-lg-4">
         <div class="panel panel-default">
-            <div class="panel-heading">
-                <h3 class="panel-title">Task Progress</h3>
-            </div>
-            <div class="panel-body">
-                <p><%= @user.user_tasks_array %></p>
-            </div>
+           <% unless @user.contacts_for_today.empty? %>
+              <div class="panel-heading">Tasks Stuff</div>
+              <div class="list-group">
+                 <% @user.contacts_for_today.each do |contact| %>
+                    <a href="<%= user_contact_path(@user.id, contact.id) %>" class="list-group-item">
+                       <em class="pull-right fa fa-square-o fa-lg fa-fw text-muted mt"></em>
+                       <h4 class="list-group-item-heading">Contact <%= contact.name %></h4>
+                    </a>
+                 <% end %>
+              </div>
+           <% else %>
+              <div class="panel-heading"><b>NO TASKS DUE</b></div>
+           <% end %>
+           <a href="<%= user_templates_path(@user.id) %>" class="media p mt0 list-group-item text-center text-muted">View task templates</a>
         </div>
-    </div>
-</div>
+     </div>
+     </div>

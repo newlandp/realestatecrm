@@ -113,7 +113,24 @@ class User < ActiveRecord::Base
   end
   
   def user_tasks_array
-    self.user_tasks.split(" ").map(&:to_i)
+    contacts = []
+    array = self.user_tasks.split(" ").map(&:to_i)
+    array.each do |i|
+      contacts << self.contacts.find(i)
+    end
+    contacts
+  end
+  
+  def number_of_tasks_completed
+    total = 0
+    self.user_tasks_array.each do |contact|
+      total += 1 if contact.status == "green"
+    end
+    total
+  end
+  
+  def number_of_tasks_remaining
+    self.user_tasks_array.size - self.number_of_tasks_completed
   end
   
   
