@@ -1,6 +1,7 @@
 class ContactsController < ApplicationController
     before_action :authenticate_user!
     before_action :require_correct_user
+    before_action :require_subscription
     
     def import
         Contact.import(params[:file], current_user.id)

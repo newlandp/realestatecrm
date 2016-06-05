@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160531205914) do
+ActiveRecord::Schema.define(version: 20160605000433) do
 
   create_table "contacts", force: :cascade do |t|
     t.integer  "user_id"
@@ -62,6 +62,8 @@ ActiveRecord::Schema.define(version: 20160531205914) do
     t.integer  "points",                 default: 0
     t.integer  "max_contacts_per_day",   default: 5
     t.string   "user_tasks",             default: ""
+    t.boolean  "subscribed"
+    t.string   "stripeid"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

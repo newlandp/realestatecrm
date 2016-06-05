@@ -1,6 +1,7 @@
 class PagesController < ApplicationController
     
     before_action :authenticate_user!, :except => [:landing]
+    before_action :require_subscription, :except => [:landing]
     
     def profile
         @user = current_user

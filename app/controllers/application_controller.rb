@@ -15,4 +15,12 @@ class ApplicationController < ActionController::Base
     end
   end
   
+private
+  
+  def require_subscription
+      unless current_user.subscribed == true
+          redirect_to new_subscriber_path
+      end
+  end
+  
 end

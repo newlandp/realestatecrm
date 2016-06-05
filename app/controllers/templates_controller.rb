@@ -2,6 +2,7 @@ class TemplatesController < ApplicationController
     
     before_action :authenticate_user!
     before_action :require_correct_user, except: [:all, :show]
+    before_action :require_subscription
     
     
     def all
