@@ -20,7 +20,7 @@ class SubscribersController < ApplicationController
         current_user.save
     
     
-        redirect_to home_path, notice: "Your subscription was set up successfully! #{token}"
+        redirect_to home_path, notice: "Your subscription was set up successfully!"
     end
     
 end
