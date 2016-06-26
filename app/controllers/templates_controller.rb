@@ -7,7 +7,7 @@ class TemplatesController < ApplicationController
     
     def all
         #show all templates of everyone in database
-        @templates = Template.all
+        @templates = Template.where("private = ?", false)
     end
     
     def index

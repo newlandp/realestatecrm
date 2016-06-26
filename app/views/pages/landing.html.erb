@@ -1,67 +1,85 @@
-
-    <nav class="navbar navbar-inverse navbar-fixed-top">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="#">Project name</a>
-        </div>
-        <div id="navbar" class="navbar-collapse collapse">
-          <div class="navbar-form navbar-right">
-                <% unless user_signed_in? %>
-                    <a class="btn btn-success" href="<%= new_user_session_path %>" role="button">Sign In</a>
-                    <a class="btn btn-success" href="<%= new_user_registration_path %>" role="button">Sign Up</a>
-                <% else %>
-                    <a class="btn btn-primary" href="<%= edit_user_registration_path %>" role="button">Edit Account</a>
-                    <a class="btn btn-danger" href="<%= destroy_user_session_path %>" data-method="delete" role="button">Sign Out</a>
-                    <a class="btn btn-primary" href="<%= home_path %>" role="button">Profile &raquo;</a>
-                <% end %>
-          </div>
-        </div><!--/.navbar-collapse -->
+<nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <% if user_signed_in? %>
+        <a class="navbar-brand" href="<%= home_path %>">Green Bee</a>
+      <% else %>
+        <a class="navbar-brand" href="#">Green Bee</a>
+      <% end %>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <div class="navbar-form navbar-right">
+            <% unless user_signed_in? %>
+                <a class="btn btn-success" href="<%= new_user_session_path %>" role="button">Sign In</a>
+                <a class="btn btn-success" href="<%= new_user_registration_path %>" role="button">Sign Up</a>
+            <% else %>
+                <a class="btn btn-primary" href="<%= edit_user_registration_path %>" role="button">Edit Account</a>
+                <a class="btn btn-danger" href="<%= destroy_user_session_path %>" data-method="delete" role="button">Sign Out</a>
+                <a class="btn btn-primary" href="<%= home_path %>" role="button">Profile &raquo;</a>
+            <% end %>
       </div>
-    </nav>
+    </div><!--/.navbar-collapse -->
+  </div>
+</nav>
     
-    <% if flash[:notice] %>
-        <div class="alert alert-info" role="alert">
-            <%= flash[:notice] %>
-        </div>
-    <% end %>
-    
-    <% if flash[:alert] %>
-        <div class="alert alert-danger" role="alert">
-            <%= flash[:alert] %>
-        </div>
-    <% end %>
+<% if flash[:notice] %>
+    <div class="alert alert-info" role="alert">
+        <%= flash[:notice] %>
+    </div>
+<% end %>
+
+<% if flash[:alert] %>
+    <div class="alert alert-danger" role="alert">
+        <%= flash[:alert] %>
+    </div>
+<% end %>
 
     <!-- Main jumbotron for a primary marketing message or call to action -->
-    <div class="jumbotron">
-      <div class="container">
-        <h1>Hello, world!</h1>
-        <p>This is a template for a simple marketing or informational website. It includes a large callout called a jumbotron and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
-        <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more &raquo;</a></p>
-      </div>
-    </div>
+<div class="jumbotron">
+  <div class="container">
+    <h1>Welcome to Green Bee Beta!</h1>
+    <p>We are currently in the "pre-beta" phase of developing Green Bee, where we are testing the gereral technical functionality of the site with real people.
+    When completed, it will help real estate agents more effectively communicate and build relationships with people on their list.
+    You were likely invited here to test this project out and give helpful feedback.
+    Feel free to create an account, play around, tinker with things, and even try to break things.
+    That is the purpose of this phase.
+    We need to know what doesn't work so improvements can be made.
+    Thank you so much for participating, and we would be super thankful to hear your feedback.
+    Direct all your feedback, critiques, and concerns to paulnewland@hotmail.com</p>
+    <!--<p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more &raquo;</a></p>-->
+  </div>
+</div>
 
-    <div class="container">
-      <!-- Example row of columns -->
-      <div class="row">
-        <div class="col-md-4">
-          <h2>Heading</h2>
-          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-          <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
-        </div>
-        <div class="col-md-4">
-          <h2>Heading</h2>
-          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-          <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
-       </div>
-        <div class="col-md-4">
-          <h2>Heading</h2>
-          <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-          <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
-        </div>
-      </div>
+<div class="container">
+  <!-- Example row of columns -->
+  <div class="row">
+    <div class="col-md-4">
+      <h2>Step 1 - Sign Up</h2>
+      <p>Set up an account!
+      You will want to click "Sign Up" in the top right corner of the page.
+      You will be directed to a page where you enter in your name, email, and password.
+      Once you do that, you will be taken to a payment page. Since we are still testing, you will use a test/fake credit card number.
+      This number is 4242 4242 4242 4242. Any expiration date in the future will be acceptable, as well as any 3 digit CVV.
+      After you enter in that information, you will be redirected to the profile page.</p>
+      <!--<p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>-->
+    </div>
+    <div class="col-md-4">
+      <h2>Step 2 - Experience the Application</h2>
+      <p>Inside the application, add contacts, templates, click around and try to break things.
+      You will need to wait a few days after you create new contacts before they show up as task to complete, but play around with that once those tasks start to appear.
+      Try to import and export CSV files to create new contacts as well.</p>
+      <!--<p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>-->
+    </div>
+    <div class="col-md-4">
+      <h2>Step 3 - Report Back</h2>
+      <p>Once you feel as though you have a good feel for the app, report back and share what you think. Email paulnewland@hotmail.com.</p>
+      <!--<p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>-->
+    </div>
+  </div>
+</div>

@@ -28,34 +28,8 @@
                 </li>
             </ul>
         </li>
-        <li class="<%= 'active' if controller?('pages') && action?('index') %>">
-            <a href="<%= index_path %>"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
-        </li>
-        <li class="<%= 'active' if controller?('pages') && action?('tables') %>">
-            <a href="<%= tables_path %>"><i class="fa fa-fw fa-table"></i> Tables</a>
-        </li>
-        <li class="<%= 'active' if controller?('pages') && action?('forms') %>">
-            <a href="<%= forms_path %>"><i class="fa fa-fw fa-edit"></i> Forms</a>
-        </li>
-        <li class="<%= 'active' if controller?('pages') && action?('bootstrap_elements') %>">
-            <a href="<%= bootstrap_elements_path %>"><i class="fa fa-fw fa-desktop"></i> Bootstrap Elements</a>
-        </li>
-        <li class="<%= 'active' if controller?('pages') && action?('bootstrap_grid') %>">
-            <a href="<%= bootstrap_grid_path %>"><i class="fa fa-fw fa-wrench"></i> Bootstrap Grid</a>
-        </li>
-        <li>
-            <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-arrows-v"></i> Dropdown <i class="fa fa-fw fa-caret-down"></i></a>
-            <ul id="demo" class="collapse">
-                <li>
-                    <a href="#">Dropdown Item</a>
-                </li>
-                <li>
-                    <a href="#">Dropdown Item</a>
-                </li>
-            </ul>
-        </li>
-        <li class="<%= 'active' if controller?('pages') && action?('blank_page') %>">
-            <a href="<%= blank_page_path %>"><i class="fa fa-fw fa-file"></i> Blank Page</a>
+        <li class="<%= 'active' if controller?('pages') && action?('about') %>">
+            <a href="<%= about_path %>"><i class="fa fa-fw fa-question-circle"></i> About</a>
         </li>
     </ul>
 </div>

@@ -161,35 +161,25 @@
     <div class="col-sm-12">
         <div class="panel panel-default">
             <div class="panel-heading">
-                <h3 class="panel-title">Task Progress</h3>
+                <% if @user.user_tasks_array.size == 0 %>
+                    <h3 class="panel-title">Task Progress</h3>
+                <% else %>
+                    <h3 class="panel-title">Task Progress - <%= @user.percent_of_tasks_completed %>% of tasks done (<%= @user.number_of_tasks_completed %> out of <%= @user.user_tasks_array.size %> assigned for today)</h3>
+                <% end %>
             </div>
             <div class="panel-body">
                 <div class="progress">
                     <!-- tasks still to go / @user.user_tasks_array.size -->
-                    <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">Stuff</div>
+                    <% if @user.user_tasks_array.size == 0 %>
+                        <div class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;">No tasks today!</div>
+                    <% else %>
+                        <div class="progress-bar" role="progressbar" aria-valuenow="<%= @user.percent_of_tasks_completed %>" aria-valuemin="0" aria-valuemax="100"
+                            style="width: <%= @user.percent_of_tasks_completed %>%; min-width: 2em;">
+                            <%= @user.percent_of_tasks_completed %>%
+                        </div>
+                    <% end %>
                 </div>
             </div>
         </div>
     </div>
 </div>
-
-<div class="row">
-     <div class="col-lg-4">
-        <div class="panel panel-default">
-           <% unless @user.contacts_for_today.empty? %>
-              <div class="panel-heading">Tasks Stuff</div>
-              <div class="list-group">
-                 <% @user.contacts_for_today.each do |contact| %>
-                    <a href="<%= user_contact_path(@user.id, contact.id) %>" class="list-group-item">
-                       <em class="pull-right fa fa-square-o fa-lg fa-fw text-muted mt"></em>
-                       <h4 class="list-group-item-heading">Contact <%= contact.name %></h4>
-                    </a>
-                 <% end %>
-              </div>
-           <% else %>
-              <div class="panel-heading"><b>NO TASKS DUE</b></div>
-           <% end %>
-           <a href="<%= user_templates_path(@user.id) %>" class="media p mt0 list-group-item text-center text-muted">View task templates</a>
-        </div>
-     </div>
-     </div>

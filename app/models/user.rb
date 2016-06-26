@@ -107,6 +107,10 @@ class User < ActiveRecord::Base
         tasks = tasks + " "
       end
       
+      if tasks == "" && user.contacts_by_days_since_task_date[0]
+        tasks = tasks + user.contacts_by_days_since_task_date[0].id.to_s if user.contacts_by_days_since_task_date[0].status == "red"
+      end
+      
       user.user_tasks = tasks.rstrip
       user.save
     end
@@ -131,6 +135,10 @@ class User < ActiveRecord::Base
   
   def number_of_tasks_remaining
     self.user_tasks_array.size - self.number_of_tasks_completed
+  end
+  
+  def percent_of_tasks_completed
+    ((self.number_of_tasks_completed.to_f / self.user_tasks_array.size.to_f).round(3) * 100).round
   end
   
   

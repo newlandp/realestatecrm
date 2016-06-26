@@ -21,8 +21,8 @@
 
 # every 1.day, :at => "7:01 am" do
 #   runner "User.all.each { |user| user.update_user_tasks }"
+# # end
+# every 1.minute do
+#   rake "updates:update_user_tasks"
 # end
-every 1.minute do
-  rake "updates:update_user_tasks", :environment => 'staging'
-end
 

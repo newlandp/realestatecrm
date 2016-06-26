@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   get "forms" => "pages#forms"
   get "bootstrap-grid" => "pages#bootstrap_grid"
   get "index" => "pages#index"
+  get "about" => "pages#about"
   get "tables" => "pages#tables"
   get "landing" => "pages#landing"
   get "home" => "pages#profile"

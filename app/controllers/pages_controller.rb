@@ -31,4 +31,7 @@ class PagesController < ApplicationController
     
     def charts
     end
+    
+    def about
+    end
 end

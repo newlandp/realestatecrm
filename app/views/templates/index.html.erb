@@ -19,6 +19,7 @@
                      <tr>
                         <th>Template Name</th>
                         <th>Method of Communication</th>
+                        <th>Is This Template Private?</th>
                      </tr>
                   </thead>
                   <tbody>
@@ -26,6 +27,7 @@
                          <tr>
                             <td><%= link_to template.name, user_template_path(template.user_id, template.id) %></td>
                             <td><%= template.method_of_communication %></td>
+                            <td><%= private_or_public(template) %></td>
                          </tr>
                      <% end %>
                   </tbody>
