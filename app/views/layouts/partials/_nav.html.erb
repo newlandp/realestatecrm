@@ -11,7 +11,7 @@
         <a class="navbar-brand" href="<%= home_path %>">Real Estate CRM</a>
     </div>
     <!-- Top Menu Items -->
-    <div class="navbar-form navbar-right">
+    <div class="navbar-form navbar-right collapse navbar-collapse navbar-ex1-collapse">
         <% unless user_signed_in? %>
             <a class="btn btn-success" href="<%= new_user_session_path %>" role="button">Sign In</a>
             <a class="btn btn-success" href="<%= new_user_registration_path %>" role="button">Sign Up</a>
