@@ -13,10 +13,6 @@
   <% end %>
   
   </br>
-  <div class="field">
-      <%= f.label :max_contacts_per_day %>
-      <%= f.number_field :max_contacts_per_day, autofocus: true, style: "width: 60px" %>
-   </div>
 
   <div class="field">
     <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
@@ -43,3 +39,14 @@
 <p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
 
 <%= link_to "Back", :back %>
+
+
+<script>
+    //  http://getbootstrap.com/javascript/#tooltips
+    $(function () {
+      $('[data-toggle="tooltip"]').tooltip()
+    })
+    
+    $('#tooltip').tooltip()
+    $('#popover').popover()
+</script>

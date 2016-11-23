@@ -32,6 +32,16 @@ body {
     line-height: normal;
 }
 
+.large {
+    font-size: 30px;
+    line-height: normal;
+}
+
+.medium {
+    font-size: 20px;
+    line-height: normal;
+}
+
 @media(min-width:768px) {
     #wrapper {
         padding-left: 225px;

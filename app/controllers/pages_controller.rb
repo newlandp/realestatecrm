@@ -34,4 +34,15 @@ class PagesController < ApplicationController
     
     def about
     end
+    
+    def import_contacts
+        @user = current_user
+        @contacts = @user.contacts.order(:name)
+        
+        respond_to do |format|
+            format.html
+            format.csv { send_data @contacts.to_csv }
+            format.xls # { send_data @products.to_csv(col_sep: "\t") }
+        end
+    end
 end

@@ -15,10 +15,10 @@
             <div class="panel-heading">
                 <div class="row">
                     <div class="col-xs-3">
-                        <i class="fa fa-users fa-5x"></i>
+                        <i class="fa fa-users fa-4x"></i>
                     </div>
                     <div class="col-xs-9 text-right">
-                        <div class="huge"><%= @user.contacts.count %></div>
+                        <div class="large"><%= @user.contacts.count %></div>
                         <div><%= "Contact".pluralize(@user.contacts.count) %></div>
                     </div>
                 </div>
@@ -37,10 +37,10 @@
             <div class="panel-heading">
                 <div class="row">
                     <div class="col-xs-3">
-                        <i class="fa fa-tasks fa-5x"></i>
+                        <i class="fa fa-tasks fa-4x"></i>
                     </div>
                     <div class="col-xs-9 text-right">
-                        <div class="huge"><%= @user.number_of_tasks_remaining %></div>
+                        <div class="large"><%= @user.number_of_tasks_remaining %></div>
                         <% if @user.number_of_tasks_completed == 0 %>
                             <div><%= "Task".pluralize(@user.number_of_tasks_remaining) %> Due Today</div>
                         <% else %>
@@ -49,10 +49,13 @@
                     </div>
                 </div>
             </div>
-            <div class="panel-footer">
-                <span class="pull-left">View task details below</span>
-                <div class="clearfix"></div>
-            </div>
+           <a href="<%= about_path %>">
+                <div class="panel-footer">
+                    <span class="pull-left">View Details</span>
+                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                    <div class="clearfix"></div>
+                </div>
+            </a>
         </div>
     </div>
     <div class="col-lg-3 col-md-6">
@@ -60,17 +63,17 @@
             <div class="panel-heading">
                 <div class="row">
                     <div class="col-xs-3">
-                        <i class="fa fa-file-text fa-5x"></i>
+                        <i class="fa fa-file-text fa-4x"></i>
                     </div>
                     <div class="col-xs-9 text-right">
-                        <div class="huge"><%= @user.templates.count %></div>
+                        <div class="large"><%= @user.templates.count %></div>
                         <div><%= "Template".pluralize(@user.templates.count) %></div>
                     </div>
                 </div>
             </div>
             <a href="<%= user_templates_path(@user.id) %>">
                 <div class="panel-footer">
-                    <span class="pull-left">View Details</span>
+                    <span class="pull-left">View Templates</span>
                     <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
                     <div class="clearfix"></div>
                 </div>
@@ -82,18 +85,21 @@
             <div class="panel-heading">
                 <div class="row">
                     <div class="col-xs-3">
-                        <i class="fa fa-star fa-5x"></i>
+                        <i class="fa fa-star fa-4x"></i>
                     </div>
                     <div class="col-xs-9 text-right">
-                        <div class="huge"><%= @user.points %></div>
+                        <div class="large"><%= @user.points %></div>
                         <div><%= "Point".pluralize(@user.points) %></div>
                     </div>
                 </div>
             </div>
-            <div class="panel-footer">
-                <span class="pull-left">Complete tasks to earn points!</span>
-                <div class="clearfix"></div>
-            </div>
+            <a href="<%= about_path %>">
+                <div class="panel-footer">
+                    <span class="pull-left">View Details</span>
+                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                    <div class="clearfix"></div>
+                </div>
+            </a>
         </div>
     </div>
 </div>
@@ -102,7 +108,7 @@
      <div class="col-lg-4 col-lg-offset-1">
         <div class="panel panel-default">
            <% unless @user.user_tasks_array.empty? %>
-              <div class="panel-heading">Tasks Stuff</div>
+              <div class="panel-heading"><a href="<%= edit_user_path(@user.id) %>" class="pull-right">Edit</a>Tasks Stuff</div>
               <div class="list-group">
                  <% @user.user_tasks_array.each do |contact| %>
                      <% unless contact.status == "green" %>

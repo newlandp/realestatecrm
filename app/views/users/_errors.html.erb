@@ -1,0 +1,21 @@
+<% if @user.errors.any? %>
+<div class="col-lg-12">
+    <div id="panelDemo12" class="panel panel-danger">
+        <div class="panel-heading">
+            <h2>
+                Oops! The <%= @user.class.name.titleize.downcase %> could not be saved. 
+            </h2>
+            <h3>
+                Please correct the following <%= pluralize(@user.errors.count, "error") %>:
+            </h3>
+        </div>
+        <div class="panel-body">
+            <ul>
+                <% @user.errors.full_messages.each do |message| %>
+                    <li><%= message %></li>
+                <% end %>
+            </ul>
+        </div>
+    </div>
+</div>
+<% end %>

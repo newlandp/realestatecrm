@@ -30,7 +30,9 @@
    </div>
    <% if @contact.new_record? %>
       <div class="form-group">
-         <%= f.label "Have you personally known and/or communicated previously with this person for over a month?" %>
+         <%= f.label :prior_relationship %> <i class="fa fa-question-circle" id="popover"
+                data-container="body" data-trigger="hover" data-toggle="popover" data-placement="top"
+                data-content="explanation"></i>
          <%= f.check_box :prior_relationship, :class => "form-control" %>
       </div>
    <% end %>
@@ -48,3 +50,14 @@
      <p><%= f.submit "Update Contact", :type => "submit", :class => "btn btn-sm btn-default" %></p>
    <% end %>
 <% end %>
+
+
+<script>
+    //  http://getbootstrap.com/javascript/#tooltips
+    $(function () {
+      $('[data-toggle="tooltip"]').tooltip()
+    })
+    
+    $('#tooltip').tooltip()
+    $('#popover').popover()
+</script>

@@ -20,15 +20,19 @@ Rails.application.routes.draw do
   get "landing" => "pages#landing"
   get "home" => "pages#profile"
   get "charts" => "pages#charts"
+  get "import-contacts" => "pages#import_contacts"
   
-  resources :users, only: [] do
+  resources :users, only: [:edit, :update] do
     resources :templates
     resources :contacts do
       collection { post :import }
     end
   end
   
+  
+  
   resources :subscribers
+  
   
   get '*path' => redirect('/')
     

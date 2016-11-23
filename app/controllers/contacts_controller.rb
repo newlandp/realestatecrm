@@ -19,6 +19,17 @@ class ContactsController < ApplicationController
         end
     end
     
+    def import_contacts
+        get_user
+        @contacts = @user.contacts.order(:name)
+        
+        respond_to do |format|
+            format.html
+            format.csv { send_data @contacts.to_csv }
+            format.xls # { send_data @products.to_csv(col_sep: "\t") }
+        end
+    end
+    
     def show
         get_user
         get_contact(@user)
